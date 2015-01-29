@@ -1,0 +1,17 @@
+---
+pypdfocr_target_folder: "/smb/Documents"
+pypdfocr_default_folder: "/smb/Documents/manual_sort"
+pypdfocr_original_move_folder: "/smb/Documents/originals"
+
+pypdfocr_folders:
+  'home/mortgage':
+    - 'mortgage_company'
+  'another/folder':
+    - 'another key word or phrase'
+
+pypdfocr_mail_smtp_server: "smtp.gmail.com:587"
+pypdfocr_smtp_login: "me@gmail.com"
+pypdfocr_smtp_password: "my_password_here"
+pypdfocr_mail_from_addr: "me@gmail.com"
+pypdfocr_mail_to_list:
+  - 'me@mydomain.com'

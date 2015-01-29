@@ -1,0 +1,9 @@
+---
+- name: install pypdfocr dependencies
+  apt: "pkg={{ item }} state=latest"
+  with_items:
+    - 'tesseract-ocr'
+    - 'python-dev'
+
+- name: install pypdfocr
+  pip: "name=pypdfocr"

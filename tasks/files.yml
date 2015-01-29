@@ -1,0 +1,4 @@
+---
+
+- name: install /etc/pypdfocr.yaml
+  template: "dest=/etc/pypdfocr.yaml src=pypdfocr.yaml.j2"

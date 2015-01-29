@@ -1,0 +1,23 @@
+---
+target_folder: "{{ pypdfocr_target_folder }}"
+default_folder: "{{ pypdfocr_default_folder }}"
+original_move_folder: "{{ pypdfocr_original_move_folder }}"
+
+folders:
+{% for folder, key_words in pypdfocr_folders.iteritems() %}
+  "{{ folder }}":
+  {% for key_word in key_words %}
+    - "{{ key_word }}"
+  {% endfor %}
+{% endfor %}
+
+{% if pypdfocr_mail_to_list is defined %}
+mail_smtp_server: "{{ pypdfocr_mail_smtp_server }}"
+mail_smtp_login: "{{ pypdfocr_smtp_login }}"
+mail_smtp_password: "{{ pypdfocr_smtp_password }}"
+mail_from_addr: "{{ pypdfocr_mail_from_addr }}"
+mail_to_list:
+{% for addr in pypdfocr_mail_to_list %}
+  - "{{ addr }}"
+{% endfor %}
+{% endif %}
