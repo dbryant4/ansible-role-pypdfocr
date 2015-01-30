@@ -5,12 +5,19 @@
   pre_tasks:
     - apt: update_cache=yes
     - apt: name=python-pip
+    - copy: src=files/Sample.pdf dest=/tmp/Sample.pdf
 
   roles:
     - ansible-role-pypdfocr
 
   post_tasks:
     - command: "/usr/local/bin/pypdfocr --help"
+      register: result
+    - assert:
+        that:
+          "result.rc == 0"
+
+    - command: "/usr/local/bin/pypdfocr /tmp/Sample.pdf"
       register: result
     - assert:
         that:
