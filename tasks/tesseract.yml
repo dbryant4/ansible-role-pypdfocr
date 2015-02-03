@@ -1,0 +1,30 @@
+---
+- name: download tesseract source code
+  get_url: "url=https://drive.google.com/uc?id=0B7l10Bj_LprhSGN2bTYwemVRREU&export=download dest=/tmp/tesseract-ocr.tar.gz"
+
+- name: untar tesseract
+  command: "tar zxvf /tmp/tesseract-ocr.tar.gz chdir=/tmp creates=/tmp/tesseract-ocr"
+
+- name: configure
+  command: "./configure chdir=/tmp/tesseract-3.03"
+
+- name: make
+  command: "make chdir=/tmp/tesseract-3.03"
+
+- name: make install
+  command: "make install chdir=/tmp/tesseract-3.03"
+
+- name: make
+  command: "make training chdir=/tmp/tesseract-3.03"
+
+- name: make install
+  command: "make training-install chdir=/tmp/tesseract-3.03"
+
+- name: ldconfig
+  command: "ldconfig"
+
+- name: download languange data
+  get_url: "url=https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz dest=/tmp/tesseract-ocr-3.02.eng.tar.gz"
+
+- name: untar tesseract language data
+  shell: "tar xfv tesseract-ocr-3.02.eng.tar.gz -C /usr/local/share/tessdata/ --wildcards --no-anchored --strip=2 'eng.*' chdir=/tmp creates=/usr/local/share/tessdata/eng.traineddata"

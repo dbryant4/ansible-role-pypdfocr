@@ -11,14 +11,15 @@
     - ansible-role-pypdfocr
 
   post_tasks:
-    - command: "/usr/local/bin/pypdfocr --help"
-      register: result
-    - assert:
-        that:
-          "result.rc == 0"
+    - command: "tesseract --list-langs"
+      register: tesseract_result
+      changed_when: False
 
     - command: "/usr/local/bin/pypdfocr /tmp/Sample.pdf"
-      register: result
+      register: pypdfocr_result
+      changed_when: False
     - assert:
         that:
-          "result.rc == 0"
+          - "tesseract_result.rc == 0"
+          - "'eng' in tesseract_result.stderr"
+          - "pypdfocr_result.rc == 0"

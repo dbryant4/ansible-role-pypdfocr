@@ -1,0 +1,15 @@
+---
+- name: download leptonia source
+  get_url: "url=http://www.leptonica.org/source/leptonica-1.71.tar.gz dest=/tmp/"
+
+- name: untar leptonica
+  command: "tar zxvf /tmp/leptonica-1.71.tar.gz chdir=/tmp/"
+
+- name: configure leptonica
+  command: "./configure chdir=/tmp/leptonica-1.71/"
+
+- name: make leptonica
+  command: "make chdir=/tmp/leptonica-1.71/"
+
+- name: make install leptonica
+  command: "make install chdir=/tmp/leptonica-1.71/"

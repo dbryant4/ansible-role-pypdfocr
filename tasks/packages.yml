@@ -2,28 +2,14 @@
 - name: install pypdfocr dependencies
   apt: "pkg={{ item }} state=latest"
   with_items:
-    - 'tesseract-ocr'
     - 'python-dev'
     - 'ghostscript'
     - 'poppler-utils'
     - 'imagemagick'
     - 'build-essential'
-    - 'libleptonica-dev'
-
-- name: install pypdfocr
-  pip: "name=pypdfocr"
-
-#- name: download tesseract source code
-#  get_url: "url=https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz dest=/tmp/"
-
-#- name: untar tesseract
-#  command: "tar zxvf /tmp/tesseract-ocr-3.02.02.tar.gz chdir=/tmp creates=/tmp/tesseract-ocr"
-
-#- name: configure
-#  command: "./configure chdir=/tmp/tesseract-ocr"
-
-#- name: make
-#  command: "make chdir=/tmp/tesseract-ocr"
-
-#- name: make install
-#  command: "make install chdir=/tmp/tesseract-ocr"
+    - 'libpng12-dev'
+    - 'libjpeg62-dev'
+    - 'zlib1g-dev'
+    - 'libicu-dev'
+    - 'libpango1.0-dev'
+    - 'libcairo2-dev'

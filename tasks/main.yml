@@ -1,3 +1,17 @@
 ---
- - include: packages.yml
- - include: files.yml
+- include: packages.yml
+
+- stat: "path=/usr/local/include/leptonica"
+  register: leptonica_dir
+
+- include: leptonia.yml
+  when: "not leptonica_dir.stat.exists"
+
+- stat: "path=/usr/local/bin/tesseract"
+  register: tesseract_bin
+- include: tesseract.yml
+  when: not tesseract_bin.stat.exists
+
+- include: install-pypdfocr.yml
+
+- include: files.yml
