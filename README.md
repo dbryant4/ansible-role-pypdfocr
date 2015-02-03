@@ -1,5 +1,8 @@
 # pypdfocr Role
 
+[![Build
+Status](https://travis-ci.org/dbryant4/ansible-role-pypdfocr.svg)](https://travis-ci.org/dbryant4/ansible-role-pypdfocr)
+
 ## Description
 
 This role manages the installation of [pypdfocr](https://pypi.python.org/pypi/pypdfocr)
