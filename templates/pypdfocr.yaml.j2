@@ -6,9 +6,9 @@ original_move_folder: "{{ pypdfocr_original_move_folder }}"
 folders:
 {% for folder, key_words in pypdfocr_folders.iteritems() %}
   "{{ folder }}":
-  {% for key_word in key_words %}
+{% for key_word in key_words %}
     - "{{ key_word }}"
-  {% endfor %}
+{% endfor %}
 {% endfor %}
 
 {% if pypdfocr_mail_to_list is defined %}
